@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -18,3 +19,12 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'alivelusai-docker'
+          command: 'start'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'kube-manifests'
+          publishLocation: 'Container'
