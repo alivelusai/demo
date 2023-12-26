@@ -15,7 +15,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: other
+        app: nginx
     spec:
       containers:
       - image: nginx
