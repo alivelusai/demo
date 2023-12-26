@@ -13,3 +13,4 @@ spec:
     - name: volume
       persistentVolumeClaim:
         claimName: disk
+        
