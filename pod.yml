@@ -1,24 +1,10 @@
-apiVersion: apps/v1
-kind: Deployment
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
 metadata:
-  creationTimestamp: null
-  labels:
-    app: nginx
-  name: nginx
-spec:
-  replicas: 10
-  selector:
-    matchLabels:
-      app: nginx
-  strategy: {}
-  template:
-    metadata:
-      creationTimestamp: null
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - image: nginx
-        name: nginx
-        resources: {}
-status: {}
+  name: managed-premium-custom
+provisioner: kubernetes.io/Azure-disk
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+parameters:
+  storageaccounttype: Premium_LRS
+  kind: Managed
