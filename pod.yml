@@ -1,15 +1,11 @@
-kind: Pod
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-  name: nginx
+  name: azure-managed-disk
 spec:
-  containers:
-    - name: nginxfrontend
-      image: nginx
-      volumeMounts:
-      - mountPath: "/mnt/Azure"
-        name: volume
-  volumes:
-    - name: volume
-      persistentVolumeClaim:
-        claimName: azure-managed-disk
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 10Gi
