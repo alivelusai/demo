@@ -14,10 +14,6 @@ spec:
       - name: myvol
         mountPath: /mount
 
-
-
-
-
 ---
 apiVersion: v1
 kind: Service
